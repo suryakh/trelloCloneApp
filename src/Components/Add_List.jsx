@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {addListStatus} from '../Redux/Actions'
+import { addListStatus, addNewList } from '../Redux/Actions'
 
 export class Add_List extends Component {
     constructor(props) {
@@ -20,10 +20,14 @@ export class Add_List extends Component {
     render() {
         console.log(this.state)
         return (
-            <div className="col-12">
-                <input value={this.state.listTitle} onChange={this.handleChange} />
-                <button onClick={() => this.props.addNewList(this.state.listTitle)}>Add List</button><button onClick={() => this.props.addListStatus()}>Close</button>
-            </div>
+            <>
+                <div className="col-12">
+                    <input className="col-12" value={this.state.listTitle} onChange={this.handleChange} />
+                </div>
+                <div className="col-12">
+                    <button onClick={() => this.props.addNewList(this.state.listTitle)}>Add List</button><button onClick={() => this.props.addListStatus()}>Close</button>
+                </div>
+            </>
         )
     }
 }
@@ -35,7 +39,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => {
     return {
         addListStatus: () => dispatch(addListStatus()),
-        addNewList:(listTitle)=>dispatch(addNewList(listTitle))
+        addNewList: (listTitle) => dispatch(addNewList(listTitle))
     }
 
 }

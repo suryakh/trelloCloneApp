@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Add_List from './Add_List'
-import {addListStatus} from '../Redux/Actions'
+import { addListStatus } from '../Redux/Actions'
+import Task_List from './Task_List'
 
 export class Home extends Component {
-    constructor (props){
+    constructor(props) {
         super(props)
-        this.state={
-            addNewlist:false
+        this.state = {
+            addNewlist: false
         }
     }
-    handleClick=()=>{
+    handleClick = () => {
         this.setState({
-            addNewlist:!this.state.addNewlist
+            addNewlist: !this.state.addNewlist
         })
     }
     render() {
-        console.log(this.props.data)
         return (
             <div className="container-fluid">
                 <div className="row">
@@ -25,7 +25,10 @@ export class Home extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    {this.props.data.addListStatus ?<Add_List /> : <button className="btn btn-primary" onClick={()=>this.props.addListStatus()}>add</button>}
+                    {this.props.appData.mainData.map((ele) => <div className="col-3"><Task_List data={ele} /></div>)}
+                    <div className="col-3">
+                        {this.props.appData.addListStatus ? <Add_List /> : <div className=" col-12 border m-1" onClick={() => this.props.addListStatus()}>add new list</div>}
+                    </div>
                 </div>
             </div>
         )
@@ -33,14 +36,14 @@ export class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    data:state.appReducer
+    appData: state.appReducer
 })
 
 const mapDispatchToProps = dispatch => {
     return {
-        addListStatus:()=>dispatch(addListStatus())
+        addListStatus: () => dispatch(addListStatus())
     }
-    
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
