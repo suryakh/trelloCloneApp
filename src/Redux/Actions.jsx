@@ -1,4 +1,4 @@
-import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST,DELETE_TASK } from './ActionTypes'
+import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST,DELETE_ITEM,EDIT_LIST_TITLE,ADD_DESCRIPTION } from './ActionTypes'
 
 const addListStatus = () => {
     return {
@@ -36,15 +36,34 @@ const addItem = (id, taskTitle) => {
         }
     }
 }
-const deleteTask = (taskId, listId) => {
+const deleteItem = (taskId, listId) => {
     return {
 
-        type: DELETE_TASK,
+        type: DELETE_ITEM,
         payload: {
             taskId: taskId,
             listId: listId
         }
     }
 }
+const editListTitle =(listId,listTitle)=>{
+    console.log(listId,listTitle)
+    return{
+        type:EDIT_LIST_TITLE,
+        payload:{
+            listId:listId,
+            listTitle:listTitle
+        }
+    }
+}
+const addDescription =(taskDesc)=>{
+return {
+    type:ADD_DESCRIPTION,
+    payload:taskDesc
+}
+}
+const editItemTitle = ()=>{
 
-export { addListStatus, addNewList, addItem, deleteList,deleteTask }
+}
+
+export { addListStatus, addNewList, addItem, deleteList,deleteItem,editListTitle,addDescription,editItemTitle }

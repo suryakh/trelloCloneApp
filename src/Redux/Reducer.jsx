@@ -1,4 +1,4 @@
-import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST, DELETE_TASK } from './ActionTypes'
+import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST, DELETE_ITEM, EDIT_LIST_TITLE, ADD_DESCRIPTION } from './ActionTypes'
 
 
 const initialState = {
@@ -62,7 +62,7 @@ const appReducer = (state = initialState, action) => {
                 mainData: state.mainData.filter((ele) => ele.id != action.payload.id)
             }
         }
-        case DELETE_TASK: {
+        case DELETE_ITEM: {
             let temp = state.mainData.map((ele) => {
                 if (ele.id == action.payload.listId) {
                     ele.items = ele.items.filter((ele) => ele.id != action.payload.taskId)
@@ -76,6 +76,50 @@ const appReducer = (state = initialState, action) => {
                 ...state,
                 mainData: temp
             }
+        }
+        case EDIT_LIST_TITLE: {
+            console.log(action)
+            let temp = state.mainData.map((ele) => {
+                console.log(ele.id, action.payload.listId)
+                if (ele.id == action.payload.listId) {
+                    ele.title = action.payload.listTitle
+                    return ele
+                }
+                else {
+                    return ele
+                }
+            })
+            // console.log(temp)
+            return {
+                ...state,
+                mainData: temp
+            }
+        }
+        case ADD_DESCRIPTION: {
+            let temp = state.mainData.map((ele) => {
+                console.log(ele.id, action.payload.listId)
+                if (ele.id == action.payload.listId) {
+                    ele.items = ele.items.map((ele) => {
+                        if (ele.id == action.payload.itemId) {
+                            ele.description = action.payload.itemDes
+                            return ele
+                        }
+                        else {
+                            return ele
+                        }
+                    })
+                    return ele
+                }
+                else {
+                    return ele
+                }
+            })
+            // console.log(temp)
+            return {
+                ...state,
+                mainData: temp
+            }
+
         }
         default: {
             return state
