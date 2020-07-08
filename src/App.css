@@ -17,8 +17,9 @@ h5 {
   grid-template-columns: 20% 20% 20% 20% 20% 20%;
 }
 .addListDiv {
-  background-color: rgb(218, 218, 218);
-  opacity: 70%;
+  background-color: #99bedb;
+  border: 2px solid white;
+  /* opacity: 80%; */
 }
 *{
   font-family: 'Ubuntu Condensed', sans-serif;

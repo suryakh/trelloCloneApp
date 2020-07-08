@@ -12,7 +12,7 @@ export class Item extends Component {
             itemTitle: this.props.data.title,
             updateState: true,
             edit: false,
-            itemDescription: ""
+            itemDescription: this.props.data.description
         }
     }
     handleChange = (e) => {
@@ -82,15 +82,15 @@ export class Item extends Component {
                             </div> :
 
                                 // Display Description
-                                
+
                                 <div>
                                     {this.props.data.description ?
                                         <div className="col-12">
                                             <div className="row">
-                                                <div className="col-8">
+                                                <div className="col-11">
                                                     <h5>Item description:</h5>
                                                 </div>
-                                                <div className="float-right" style={{ cursor: "pointer" }} onClick={() => this.setState({ edit: true })}><FontAwesomeIcon icon={faPen} /></div>
+                                                <div className="col-1" style={{ cursor: "pointer" }} onClick={() => this.setState({ edit: true })}><FontAwesomeIcon icon={faPen} /></div>
                                             </div>
                                             <div className="row p-2" style={{ height: "100px", backgroundColor: "#c7cbdb" }}>
                                                 <p>{this.props.data.description}</p>

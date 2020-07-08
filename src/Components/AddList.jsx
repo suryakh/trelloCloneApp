@@ -14,8 +14,13 @@ export class AddList extends Component {
             listTitle: e.target.value
         })
     }
-    addList = (data) => {
-        console.log(data)
+    addNewList = () => {
+        if(/\S/.test(this.state.listTitle)){
+            this.props.addNewList(this.state.listTitle)
+        }
+        else{
+            alert("please Enter title")
+        }
     }
     render() {
         console.log(this.state)
@@ -23,10 +28,10 @@ export class AddList extends Component {
             <>
                 <div className=" row listDiv p-2 m-1">
                     <div className="col-12">
-                        <input className="col-12" value={this.state.listTitle} onChange={this.handleChange} />
+                        <input className="col-12" placeholder="Enter list title" value={this.state.listTitle} onChange={this.handleChange} />
                     </div>
                     <div className="col-12 m-2">
-                        <button className="btn btn-success"  onClick={() => this.props.addNewList(this.state.listTitle)}>Add List</button><button className="btn btn-danger" onClick={() => this.props.addListStatus()}>Close</button>
+                        <button className="btn btn-success"  onClick={() => this.addNewList()}>Add List</button><button className="btn btn-danger" onClick={() => this.props.addListStatus()}>Close</button>
                     </div>
                 </div>
             </>

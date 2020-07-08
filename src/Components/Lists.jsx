@@ -35,10 +35,18 @@ export class Itemlist extends Component {
     }
     // Adding new Item to the List
     addnewItem = () => {
+        if(/\S/.test(this.state.itemTitle)){
         this.setState({
             addItemStatus: !this.state.addItemStatus
         })
         this.props.addItem(this.props.data.id, this.state.itemTitle)
+        this.setState({
+            itemTitle:""
+        })
+    }
+    else {
+        alert("please enter title")
+    }
     }
     //  dispatch action for edit listTitle
     editListTitle = () => {
@@ -78,7 +86,7 @@ export class Itemlist extends Component {
                             <div className="row m-1">
                                 <input className="col-8" name="listTitle" value={this.state.listTitle} onChange={this.handleChange} />
                                 <button className="btn btn-success" onClick={() => this.editListTitle()}>save</button>
-                                <div style={{ cursor: "pointer" }} className="m-1" onClick={() => this.changeEditMode()} ><FontAwesomeIcon style={{ color: "red" }} icon={faTimes} size="lg" /></div>
+                                <div style={{ cursor: "pointer" }} className="ml-3 mt-2" onClick={() => this.changeEditMode()} ><FontAwesomeIcon style={{ color: "red" }} icon={faTimes} size="lg" /></div>
                             </div> :
                             <div className="row">
                                 <h5 className="col-11" onClick={() => this.changeEditMode()}>{this.props.data.title}</h5>
@@ -87,7 +95,7 @@ export class Itemlist extends Component {
 
                             {/* Displaying Items  */}
 
-                        <div style={{ minHeight: "25px" }} onDragOver={(e) => this.onDragOver(e)} onDrop={(e) => this.onDrop(e)}>
+                        <div style={{ minHeight: "25px",padding:"20px 10px" }} onDragOver={(e) => this.onDragOver(e)} onDrop={(e) => this.onDrop(e)}>
                             {this.props.data.items.map((ele) => 
                                 <div onDragStart={(e) => this.onDragStart(e, ele)} className="col-12" draggable>
                                 <div className="row shadow mt-3 p-2">
@@ -105,8 +113,8 @@ export class Itemlist extends Component {
                         {/* Adding new Item */}
 
                         {this.state.addItemStatus ? <div className="row m-2" style={{ cursor: "pointer" }} onClick={() => this.addItemStatus()}> <p><FontAwesomeIcon icon={faPlus} /> Add Item </p></div> : <div className="row m-2">
-                            <input className="col-8" type="text" name="itemTitle" value={this.state.itemTitle} onChange={this.handleChange} />
-                            <button className="btn btn-success" onClick={() => this.addnewItem()}>add</button><div className="m-1" style={{ cursor: "pointer" }} onClick={() => this.addItemStatus()}><FontAwesomeIcon style={{ color: "red" }} icon={faTimes} size="lg" /></div>
+                            <input placeholder="Enter item title" className="col-8" type="text" name="itemTitle" value={this.state.itemTitle} onChange={this.handleChange} />
+                            <button className="btn btn-success" onClick={() => this.addnewItem()}>add</button><div className="ml-3 mt-2" style={{ cursor: "pointer" }} onClick={() => this.addItemStatus()}><FontAwesomeIcon style={{ color: "red" }} icon={faTimes} size="lg" /></div>
                         </div>}
                     </div>
                 </div>
