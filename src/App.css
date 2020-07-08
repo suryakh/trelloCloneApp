@@ -1,8 +1,8 @@
 body {
-  background-color:#559839;
+  background-color:#287abf;
 }
 .navBar {
-  background-color: #478131;
+  background-color: #2168a3;
 }
 h5 {
   margin: 0;
@@ -19,4 +19,7 @@ h5 {
 .addListDiv {
   background-color: rgb(218, 218, 218);
   opacity: 70%;
+}
+*{
+  font-family: 'Ubuntu Condensed', sans-serif;
 }

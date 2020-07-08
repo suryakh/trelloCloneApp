@@ -1,4 +1,4 @@
-import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST,DELETE_ITEM,EDIT_LIST_TITLE,ADD_DESCRIPTION,EDIT_ITEM_TITLE } from './ActionTypes'
+import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST,DELETE_ITEM,EDIT_LIST_TITLE,ADD_DESCRIPTION,EDIT_ITEM_TITLE,DROP_ITEM } from './ActionTypes'
 
 const addListStatus = () => {
     return {
@@ -68,5 +68,14 @@ const editItemTitle = (itemData)=>{
         payload:itemData
     }
 }
+const dropItem =(data,id)=>{
+    return {
+        type:DROP_ITEM,
+        payload:{
+            droppedId:id,
+            itemData:data
+        }
+    }    
 
-export { addListStatus, addNewList, addItem, deleteList,deleteItem,editListTitle,addDescription,editItemTitle }
+}
+export { addListStatus, addNewList, addItem, deleteList,deleteItem,editListTitle,addDescription,editItemTitle ,dropItem}

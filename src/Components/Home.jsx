@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Add_List from './Add_List'
 import { addListStatus } from '../Redux/Actions'
-import Task_List from './Task_List'
+import Lists from './Lists'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+
 
 export class Home extends Component {
     constructor(props) {
@@ -21,13 +24,13 @@ export class Home extends Component {
             <div className="container-fluid">
                 <div className="row mb-3">
                     <div className="col-12 navBar text-center">
-                        <h1>Trello</h1>
+                        <h1>TrelloClone</h1>
                     </div>
                 </div>
                 <div className="mainDiv">
-                    {this.props.appData.mainData.map((ele) => <div><Task_List data={ele} /></div>)}
+                    {this.props.appData.mainData.map((ele) => <div><Lists data={ele} /></div>)}
                     <div >
-                        {this.props.appData.addListStatus ? <Add_List /> : <div className=" col-12 border addListDiv m-1 p-2" style={{cursor:"pointer"}} onClick={() => this.props.addListStatus()}>add new list</div>}
+                        {this.props.appData.addListStatus ? <Add_List /> : <div className=" col-12 border addListDiv m-1 p-2" style={{cursor:"pointer"}} onClick={() => this.props.addListStatus()}><FontAwesomeIcon icon={faPlus} /> add new list</div>}
                     </div>
                 </div>
             </div>

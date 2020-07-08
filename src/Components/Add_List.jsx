@@ -26,7 +26,7 @@ export class Add_List extends Component {
                         <input className="col-12" value={this.state.listTitle} onChange={this.handleChange} />
                     </div>
                     <div className="col-12 m-2">
-                        <button onClick={() => this.props.addNewList(this.state.listTitle)}>Add List</button><button onClick={() => this.props.addListStatus()}>Close</button>
+                        <button className="btn btn-success"  onClick={() => this.props.addNewList(this.state.listTitle)}>Add List</button><button className="btn btn-danger" onClick={() => this.props.addListStatus()}>Close</button>
                     </div>
                 </div>
             </>
