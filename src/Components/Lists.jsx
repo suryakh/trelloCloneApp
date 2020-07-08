@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addItem, deleteList, deleteItem, editListTitle, dropItem } from '../Redux/Actions'
 import Item from './Item'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faTrash, faTrashAlt, faAlignLeft, faCross, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faTrash, faTrashAlt, faAlignLeft,faTimes } from '@fortawesome/free-solid-svg-icons'
 
 export class Itemlist extends Component {
     constructor(props) {
@@ -60,7 +60,7 @@ export class Itemlist extends Component {
     }
     onDrop = (e) => {
         let data = JSON.parse(e.dataTransfer.getData('data'))
-        if (this.props.data.id != data.dragId) {
+        if (this.props.data.id !== data.dragId) {
             this.props.dropItem(data, this.props.data.id)
         }
     }
@@ -81,7 +81,7 @@ export class Itemlist extends Component {
                                 <div style={{ cursor: "pointer" }} className="m-1" onClick={() => this.changeEditMode()} ><FontAwesomeIcon style={{ color: "red" }} icon={faTimes} size="lg" /></div>
                             </div> :
                             <div className="row">
-                                <h5 className="col-10" onClick={() => this.changeEditMode()}>{this.props.data.title}</h5>
+                                <h5 className="col-11" onClick={() => this.changeEditMode()}>{this.props.data.title}</h5>
                                 <div style={{ cursor: "pointer" }} onClick={() => this.props.deleteList(this.props.data.id)}><FontAwesomeIcon icon={faTrash} size="xs" /></div>
                             </div>}
 
@@ -91,7 +91,7 @@ export class Itemlist extends Component {
                             {this.props.data.items.map((ele) => 
                                 <div onDragStart={(e) => this.onDragStart(e, ele)} className="col-12" draggable>
                                 <div className="row shadow mt-3 p-2">
-                                    <div className='col-10 ' style={{ cursor: "pointer" }} data-toggle="modal" data-target={`#modal${ele.id}`}>{ele.title} </div><div style={{ cursor: "pointer" }} onClick={() => this.props.deleteItem(ele.id, this.props.data.id)}><FontAwesomeIcon icon={faTrashAlt} size="xs" /></div>
+                                    <div className='col-11' style={{ cursor: "pointer" }} data-toggle="modal" data-target={`#modal${ele.id}`}>{ele.title} </div><div style={{ cursor: "pointer" }} onClick={() => this.props.deleteItem(ele.id, this.props.data.id)}><FontAwesomeIcon icon={faTrashAlt} size="xs" /></div>
                                     {ele.description && <div className='col-9'><FontAwesomeIcon icon={faAlignLeft} /></div>}
                                 </div>
 

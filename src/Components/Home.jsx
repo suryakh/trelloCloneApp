@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import Lists from './Lists'
-import Add_List from './Add_List'
+import AddList from './AddList'
 import { addListStatus } from '../Redux/Actions'
 
 
@@ -30,7 +30,7 @@ export class Home extends Component {
                 <div className="mainDiv">
                     {this.props.appData.mainData.map((ele) => <div><Lists data={ele} /></div>)}
                     <div >
-                        {this.props.appData.addListStatus ? <Add_List /> : <div className=" col-12 border addListDiv m-1 p-2" style={{cursor:"pointer"}} onClick={() => this.props.addListStatus()}><FontAwesomeIcon icon={faPlus} /> add new list</div>}
+                        {this.props.appData.addListStatus ? <AddList /> : <div className=" col-12 border addListDiv m-1 p-2" style={{cursor:"pointer"}} onClick={() => this.props.addListStatus()}><FontAwesomeIcon icon={faPlus} /> add new list</div>}
                     </div>
                 </div>
             </div>
