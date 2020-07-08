@@ -1,4 +1,4 @@
-import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST, DELETE_ITEM, EDIT_LIST_TITLE, ADD_DESCRIPTION, EDIT_ITEM_TITLE,DROP_ITEM } from './ActionTypes'
+import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST, DELETE_ITEM, EDIT_LIST_TITLE, ADD_DESCRIPTION, EDIT_ITEM_TITLE, DROP_ITEM } from './ActionTypes'
 
 
 const initialState = {
@@ -134,24 +134,24 @@ const appReducer = (state = initialState, action) => {
                 mainData: temp
             }
         }
-        case DROP_ITEM:{
+        case DROP_ITEM: {
             let temp = state.mainData.map((ele) => {
                 console.log(ele.id, action.payload.listId)
                 if (ele.id === action.payload.droppedId) {
-                    ele.items= [...ele.items,action.payload.itemData]
+                    ele.items = [...ele.items, action.payload.itemData]
                     return ele
                 }
-                else if(ele.id === action.payload.itemData.dragId) {
-                    ele.items = ele.items.filter((ele)=>ele.id !== action.payload.itemData.id)
+                else if (ele.id === action.payload.itemData.dragId) {
+                    ele.items = ele.items.filter((ele) => ele.id !== action.payload.itemData.id)
                     return ele
                 }
-                else{
+                else {
                     return ele
                 }
             })
             return {
                 ...state,
-                mainData:temp
+                mainData: temp
             }
         }
         default: {

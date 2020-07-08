@@ -15,10 +15,10 @@ export class AddList extends Component {
         })
     }
     addNewList = () => {
-        if(/\S/.test(this.state.listTitle)){
+        if (/\S/.test(this.state.listTitle)) {
             this.props.addNewList(this.state.listTitle)
         }
-        else{
+        else {
             alert("please Enter title")
         }
     }
@@ -31,7 +31,7 @@ export class AddList extends Component {
                         <input className="col-12" placeholder="Enter list title" value={this.state.listTitle} onChange={this.handleChange} />
                     </div>
                     <div className="col-12 m-2">
-                        <button className="btn btn-success"  onClick={() => this.addNewList()}>Add List</button><button className="btn btn-danger" onClick={() => this.props.addListStatus()}>Close</button>
+                        <button className="btn btn-success" onClick={() => this.addNewList()}>Add List</button><button className="btn btn-danger" onClick={() => this.props.addListStatus()}>Close</button>
                     </div>
                 </div>
             </>

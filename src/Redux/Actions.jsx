@@ -1,4 +1,4 @@
-import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST,DELETE_ITEM,EDIT_LIST_TITLE,ADD_DESCRIPTION,EDIT_ITEM_TITLE,DROP_ITEM } from './ActionTypes'
+import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST, DELETE_ITEM, EDIT_LIST_TITLE, ADD_DESCRIPTION, EDIT_ITEM_TITLE, DROP_ITEM } from './ActionTypes'
 
 const addListStatus = () => {
     return {
@@ -46,36 +46,36 @@ const deleteItem = (taskId, listId) => {
         }
     }
 }
-const editListTitle =(listId,listTitle)=>{
-    console.log(listId,listTitle)
-    return{
-        type:EDIT_LIST_TITLE,
-        payload:{
-            listId:listId,
-            listTitle:listTitle
+const editListTitle = (listId, listTitle) => {
+    console.log(listId, listTitle)
+    return {
+        type: EDIT_LIST_TITLE,
+        payload: {
+            listId: listId,
+            listTitle: listTitle
         }
     }
 }
-const addDescription =(taskDesc)=>{
-return {
-    type:ADD_DESCRIPTION,
-    payload:taskDesc
-}
-}
-const editItemTitle = (itemData)=>{
+const addDescription = (taskDesc) => {
     return {
-        type:EDIT_ITEM_TITLE,
-        payload:itemData
+        type: ADD_DESCRIPTION,
+        payload: taskDesc
     }
 }
-const dropItem =(data,id)=>{
+const editItemTitle = (itemData) => {
     return {
-        type:DROP_ITEM,
-        payload:{
-            droppedId:id,
-            itemData:data
+        type: EDIT_ITEM_TITLE,
+        payload: itemData
+    }
+}
+const dropItem = (data, id) => {
+    return {
+        type: DROP_ITEM,
+        payload: {
+            droppedId: id,
+            itemData: data
         }
-    }    
+    }
 
 }
-export { addListStatus, addNewList, addItem, deleteList,deleteItem,editListTitle,addDescription,editItemTitle ,dropItem}
+export { addListStatus, addNewList, addItem, deleteList, deleteItem, editListTitle, addDescription, editItemTitle, dropItem }

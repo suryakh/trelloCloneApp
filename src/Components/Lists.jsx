@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addItem, deleteList, deleteItem, editListTitle, dropItem } from '../Redux/Actions'
 import Item from './Item'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faTrash, faTrashAlt, faAlignLeft,faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faTrash, faTrashAlt, faAlignLeft, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 export class Itemlist extends Component {
     constructor(props) {
@@ -35,18 +35,18 @@ export class Itemlist extends Component {
     }
     // Adding new Item to the List
     addnewItem = () => {
-        if(/\S/.test(this.state.itemTitle)){
-        this.setState({
-            addItemStatus: !this.state.addItemStatus
-        })
-        this.props.addItem(this.props.data.id, this.state.itemTitle)
-        this.setState({
-            itemTitle:""
-        })
-    }
-    else {
-        alert("please enter title")
-    }
+        if (/\S/.test(this.state.itemTitle)) {
+            this.setState({
+                addItemStatus: !this.state.addItemStatus
+            })
+            this.props.addItem(this.props.data.id, this.state.itemTitle)
+            this.setState({
+                itemTitle: ""
+            })
+        }
+        else {
+            alert("please enter title")
+        }
     }
     //  dispatch action for edit listTitle
     editListTitle = () => {
@@ -93,21 +93,21 @@ export class Itemlist extends Component {
                                 <div style={{ cursor: "pointer" }} onClick={() => this.props.deleteList(this.props.data.id)}><FontAwesomeIcon icon={faTrash} size="xs" /></div>
                             </div>}
 
-                            {/* Displaying Items  */}
+                        {/* Displaying Items  */}
 
-                        <div style={{ minHeight: "25px",padding:"20px 10px" }} onDragOver={(e) => this.onDragOver(e)} onDrop={(e) => this.onDrop(e)}>
-                            {this.props.data.items.map((ele) => 
+                        <div style={{ minHeight: "25px", padding: "20px 10px" }} onDragOver={(e) => this.onDragOver(e)} onDrop={(e) => this.onDrop(e)}>
+                            {this.props.data.items.map((ele) =>
                                 <div onDragStart={(e) => this.onDragStart(e, ele)} className="col-12" draggable>
-                                <div className="row shadow mt-3 p-2">
-                                    <div className='col-11' style={{ cursor: "pointer" }} data-toggle="modal" data-target={`#modal${ele.id}`}>{ele.title} </div><div style={{ cursor: "pointer" }} onClick={() => this.props.deleteItem(ele.id, this.props.data.id)}><FontAwesomeIcon icon={faTrashAlt} size="xs" /></div>
-                                    {ele.description && <div className='col-9'><FontAwesomeIcon icon={faAlignLeft} /></div>}
-                                </div>
+                                    <div className="row shadow mt-3 p-2">
+                                        <div className='col-11' style={{ cursor: "pointer" }} data-toggle="modal" data-target={`#modal${ele.id}`}>{ele.title} </div><div style={{ cursor: "pointer" }} onClick={() => this.props.deleteItem(ele.id, this.props.data.id)}><FontAwesomeIcon icon={faTrashAlt} size="xs" /></div>
+                                        {ele.description && <div className='col-9'><FontAwesomeIcon icon={faAlignLeft} /></div>}
+                                    </div>
 
-                                <div className="modal fade" id={`modal${ele.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <Item data={ele} listId={this.props.data.id} />
-                                </div>
+                                    <div className="modal fade" id={`modal${ele.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <Item data={ele} listId={this.props.data.id} />
+                                    </div>
 
-                            </div>)}
+                                </div>)}
                         </div>
 
                         {/* Adding new Item */}
