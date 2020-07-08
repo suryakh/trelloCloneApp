@@ -44,27 +44,38 @@ export class Itemlist extends Component {
         console.log(this.state)
         return (
             <>
-                <div className="row">
-                    {this.state.titleEdit ? <div><input name="listTitle" value={this.state.listTitle} onChange={this.handleChange} /> <button onClick={() => this.editListTitle()}>save</button><button onClick={() => this.changeEditMode()} >close</button></div> : <div className="col-9">
-                        <h5 onClick={() => this.changeEditMode()}>{this.props.data.title}</h5>
+                <div className="row m-1">
+                    <div className="col-12 p-3 listDiv">
+                        {this.state.titleEdit ?
+                            <div className="row m-1">
+                                <input className="col-9" name="listTitle" value={this.state.listTitle} onChange={this.handleChange} />
+                                <button onClick={() => this.editListTitle()}>save</button>
+                                <button className="float-right" onClick={() => this.changeEditMode()} >X</button>
+                            </div>
+                            :
+                            <div className="row">
+                                <h5 className="col-9" onClick={() => this.changeEditMode()}>{this.props.data.title}</h5>
+                                <button onClick={() => this.props.deleteList(this.props.data.id)}>Delete</button>
+                            </div>}
+                        <div>
+                            {this.props.data.items.map((ele) => <div className="col-12 ">
+                                <div className="row shadow mt-3">
+                                    <div className='col-9' style={{cursor:"pointer"}} data-toggle="modal" data-target={`#modal${ele.id}`}>{ele.title} </div><button onClick={() => this.props.deleteItem(ele.id, this.props.data.id)}>delete</button>
+                                   {ele.description && <div className='col-9'>fahsdg</div>}
+                                </div>
 
-                    </div>}
-                    <div></div>
-                    <div className="col-3"><button onClick={() => this.props.deleteList(this.props.data.id)}>Delete</button></div>
 
-                </div>
-                <div>
-                    {this.props.data.items.map((ele) => <div className="col-12">
-                        <div data-toggle="modal" data-target={`#modal${ele.id}`}>{ele.title} </div><button onClick={() => this.props.deleteItem(ele.id, this.props.data.id)}>delete</button>
-                        <div className="modal fade" id={`modal${ele.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <Item data={ele} listId={this.props.data.id} />
+                                <div className="modal fade" id={`modal${ele.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <Item data={ele} listId={this.props.data.id} />
+                                </div>
+                            </div>)}
                         </div>
-                    </div>)}
+                        {this.state.addItemStatus ? <div className="row m-2" style={{ cursor: "pointer" }} onClick={() => this.addItemStatus()}>Add Item</div> : <div className="row m-2">
+                            <input className="col-8" type="text" name="itemTitle" value={this.state.itemTitle} onChange={this.handleChange} />
+                            <button onClick={() => this.addnewItem()}>add</button><button onClick={() => this.addItemStatus()}>X</button>
+                        </div>}
+                    </div>
                 </div>
-                {this.state.addItemStatus ? <button onClick={() => this.addItemStatus()}>Add Item</button> : <div>
-                    <input type="text" name="itemTitle" value={this.state.itemTitle} onChange={this.handleChange} />
-                    <button onClick={() => this.addnewItem()}>add</button><button onClick={() => this.addItemStatus()}>Close</button>
-                </div>}
             </>
         )
     }

@@ -1,4 +1,4 @@
-import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST,DELETE_ITEM,EDIT_LIST_TITLE,ADD_DESCRIPTION } from './ActionTypes'
+import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST,DELETE_ITEM,EDIT_LIST_TITLE,ADD_DESCRIPTION,EDIT_ITEM_TITLE } from './ActionTypes'
 
 const addListStatus = () => {
     return {
@@ -62,8 +62,11 @@ return {
     payload:taskDesc
 }
 }
-const editItemTitle = ()=>{
-
+const editItemTitle = (itemData)=>{
+    return {
+        type:EDIT_ITEM_TITLE,
+        payload:itemData
+    }
 }
 
 export { addListStatus, addNewList, addItem, deleteList,deleteItem,editListTitle,addDescription,editItemTitle }

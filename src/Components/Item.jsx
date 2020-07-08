@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addDescription,editItemTitle } from '../Redux/Actions'
+import { addDescription, editItemTitle } from '../Redux/Actions'
 
 export class Item extends Component {
     constructor(props) {
@@ -44,7 +44,7 @@ export class Item extends Component {
         let temp = {
             itemId: this.props.data.id,
             listId: this.props.listId,
-            itemDes: this.state.itemTitle
+            itemTitle: this.state.itemTitle
         }
         this.props.editItemTitle(temp)
     }
@@ -57,9 +57,10 @@ export class Item extends Component {
                     <div className="modal-content">
                         <div className="modal-header">
                             <div className="row">
-                                {this.state.titleEdit ? <div><input name="ItemTitle" value={this.state.itemTitle} onChange={this.handleChange} /> <button onClick={() => this.editItemTitle()}>save</button><button onClick={() => this.changeEditMode()} >close</button></div> : <div className="col-9">
+                                <div className="col-12"><p>Item:</p></div>
+                                {this.state.titleEdit ? <div className="col-12"><input name="itemTitle" value={this.state.itemTitle} onChange={this.handleChange} /> <button onClick={() => this.editItemTitle()}>save</button><button onClick={() => this.changeEditMode()} >close</button></div> : 
+                                <div className="col-12">
                                     <h5 onClick={() => this.changeEditMode()}>{this.props.data.title}</h5>
-
                                 </div>}
                                 <div></div>
                             </div>
@@ -68,18 +69,26 @@ export class Item extends Component {
                             </button>
                         </div>
                         <div className="modal-body">
-                            {this.state.edit ? <div>
-                                <textarea type="textarea" name="itemDescription" onChange={this.handleChange} value={this.state.itemDescription} />
+                            {this.state.edit ? <div className="col-12">
+                                <p>Item Description</p>
+                                <textarea className="col-12" type="textarea" name="itemDescription" onChange={this.handleChange} value={this.state.itemDescription} />
                                 <button onClick={() => this.handleClick()}>save</button>
                             </div> : <div>
                                     {this.props.data.description ?
-                                        <div>
-                                            <p>{this.props.data.description}
-                                            </p> <button onClick={() => this.setState({ edit: true })}>edit</button> </div> : <p>add description
-                                <textarea type="textarea" name="itemDescription" onChange={this.handleChange} value={this.state.itemDescription} />
+                                        <div className="col-12">
+                                            <div className="row p-2">
+                                            <p>Item Description</p>
+                                            <button onClick={() => this.setState({ edit: true })}>edit</button>
+                                            </div>
+                                            <div className=" row p-2" style={{height:"100px",backgroundColor:"#eaecf0"}}>
+                                            <p>{this.props.data.description}</p> 
+                                            </div>
+                                             </div> : 
+                                             <div>
+                                            <p>add description </p>
+                                            <textarea className="col-12" type="textarea" name="itemDescription" onChange={this.handleChange} value={this.state.itemDescription} />
                                             <button onClick={() => this.handleClick()}>save</button>
-                                        </p>
-
+                                            </div>
                                     }
                                 </div>}
 
@@ -98,7 +107,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => {
     return {
         addDescription: (itemDesc) => dispatch(addDescription(itemDesc)),
-        editItemTitle:(itemTitle) =>dispatch(editItemTitle(itemTitle))
+        editItemTitle: (itemTitle) => dispatch(editItemTitle(itemTitle))
     }
 }
 

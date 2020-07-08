@@ -21,11 +21,13 @@ export class Add_List extends Component {
         console.log(this.state)
         return (
             <>
-                <div className="col-12">
-                    <input className="col-12" value={this.state.listTitle} onChange={this.handleChange} />
-                </div>
-                <div className="col-12">
-                    <button onClick={() => this.props.addNewList(this.state.listTitle)}>Add List</button><button onClick={() => this.props.addListStatus()}>Close</button>
+                <div className=" row listDiv p-2 m-1">
+                    <div className="col-12">
+                        <input className="col-12" value={this.state.listTitle} onChange={this.handleChange} />
+                    </div>
+                    <div className="col-12 m-2">
+                        <button onClick={() => this.props.addNewList(this.state.listTitle)}>Add List</button><button onClick={() => this.props.addListStatus()}>Close</button>
+                    </div>
                 </div>
             </>
         )

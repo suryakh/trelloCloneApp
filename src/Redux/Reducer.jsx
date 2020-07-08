@@ -1,4 +1,4 @@
-import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST, DELETE_ITEM, EDIT_LIST_TITLE, ADD_DESCRIPTION } from './ActionTypes'
+import { CHANGE_ADD_LIST_STATUS, ADD_NEW_LIST, ADD_NEW_ITEM, DELETE_LIST, DELETE_ITEM, EDIT_LIST_TITLE, ADD_DESCRIPTION, EDIT_ITEM_TITLE } from './ActionTypes'
 
 
 const initialState = {
@@ -6,7 +6,7 @@ const initialState = {
     mainData: [{
         id: 3,
         title: "OnHold",
-        items: []
+        items: [{id:33,title:"aksjfajnfd",description:"asdfjhadfjhbasdfhb"}]
     },
     {
         id: 5,
@@ -102,6 +102,32 @@ const appReducer = (state = initialState, action) => {
                     ele.items = ele.items.map((ele) => {
                         if (ele.id == action.payload.itemId) {
                             ele.description = action.payload.itemDes
+                            return ele
+                        }
+                        else {
+                            return ele
+                        }
+                    })
+                    return ele
+                }
+                else {
+                    return ele
+                }
+            })
+            // console.log(temp)
+            return {
+                ...state,
+                mainData: temp
+            }
+
+        }
+        case EDIT_ITEM_TITLE: {
+            let temp = state.mainData.map((ele) => {
+                console.log(ele.id, action.payload.listId)
+                if (ele.id == action.payload.listId) {
+                    ele.items = ele.items.map((ele) => {
+                        if (ele.id == action.payload.itemId) {
+                            ele.title = action.payload.itemTitle
                             return ele
                         }
                         else {

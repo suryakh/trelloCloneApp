@@ -19,15 +19,15 @@ export class Home extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <div className="row">
-                    <div className="col-12 bg-primary text-center">
+                <div className="row mb-3">
+                    <div className="col-12 navBar text-center">
                         <h1>Trello</h1>
                     </div>
                 </div>
-                <div className="row">
-                    {this.props.appData.mainData.map((ele) => <div className="col-3"><Task_List data={ele} /></div>)}
-                    <div className="col-3">
-                        {this.props.appData.addListStatus ? <Add_List /> : <div className=" col-12 border m-1" onClick={() => this.props.addListStatus()}>add new list</div>}
+                <div className="mainDiv">
+                    {this.props.appData.mainData.map((ele) => <div><Task_List data={ele} /></div>)}
+                    <div >
+                        {this.props.appData.addListStatus ? <Add_List /> : <div className=" col-12 border addListDiv m-1 p-2" style={{cursor:"pointer"}} onClick={() => this.props.addListStatus()}>add new list</div>}
                     </div>
                 </div>
             </div>
