@@ -30,7 +30,7 @@ export class Home extends Component {
                 <div className="mainDiv">
                     {this.props.appData.mainData.map((ele) => <div><Lists data={ele} /></div>)}
                     <div >
-                        {this.props.appData.addListStatus ? <AddList /> : <div className=" col-12 border addListDiv m-1 p-2" style={{ cursor: "pointer" }} onClick={() => this.props.addListStatus()}><FontAwesomeIcon icon={faPlus} /> add new list</div>}
+                        {this.props.appData.addListStatus ? <AddList /> : <div className=" col-12 border addListDiv m-1 p-2" style={{cursor:"pointer"}} onClick={() => this.props.addListStatus()}><FontAwesomeIcon icon={faPlus} /> add new list</div>}
                     </div>
                 </div>
             </div>
