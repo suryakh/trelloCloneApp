@@ -5,6 +5,10 @@ Trello Clone
 
 Demo :
 
+link : https://trelloclonereactapp.netlify.app/
+
+![demo](https://github.com/suryakh/trelloCloneApp/blob/master/screenshots/trelloCloneDemo.gif)
+
 Features:
 
 1. Can add new list / multiple lists.
