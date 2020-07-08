@@ -31,10 +31,8 @@ export class Item extends Component {
             listId: this.props.listId,
             itemDes: this.state.itemDescription
         }
-        // console.log(this.state)
         this.props.addDescription(temp)
         this.setState({
-            // updateState: !this.state.updateState,
             edit: false
         })
     }
@@ -58,6 +56,9 @@ export class Item extends Component {
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
+
+                            {/* Edit Item Title  */}
+
                             <div className="row p-2">
                                 <div className="col-12"><h5>Item:</h5></div>
                                 {this.state.titleEdit ? <div className="col-12"><input name="itemTitle" value={this.state.itemTitle} onChange={this.handleChange} /> <button className="btn btn-success" onClick={() => this.editItemTitle()}>save</button><button className="btn btn-danger" onClick={() => this.changeEditMode()} >close</button></div> :
@@ -70,12 +71,19 @@ export class Item extends Component {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+
+                        {/* Edit Item Description  */}
+
                         <div className="modal-body">
                             {this.state.edit ? <div className="col-12">
                                 <h5>Item description:</h5>
                                 <textarea className="col-12" type="textarea" name="itemDescription" onChange={this.handleChange} value={this.state.itemDescription} />
                                 <button className="btn btn-success" onClick={() => this.handleClick()}>save</button>
-                            </div> : <div>
+                            </div> :
+
+                                // Display Description
+                                
+                                <div>
                                     {this.props.data.description ?
                                         <div className="col-12">
                                             <div className="row">
@@ -88,6 +96,9 @@ export class Item extends Component {
                                                 <p>{this.props.data.description}</p>
                                             </div>
                                         </div> :
+
+                                        // Add Item Description
+
                                         <div>
                                             <p>add description </p>
                                             <textarea placeholder="enter description ...." className="col-12" type="textarea" name="itemDescription" onChange={this.handleChange} value={this.state.itemDescription} />

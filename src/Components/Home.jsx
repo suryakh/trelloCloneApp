@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Add_List from './Add_List'
-import { addListStatus } from '../Redux/Actions'
-import Lists from './Lists'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import Lists from './Lists'
+import Add_List from './Add_List'
+import { addListStatus } from '../Redux/Actions'
 
 
 export class Home extends Component {

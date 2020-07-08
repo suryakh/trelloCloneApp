@@ -89,7 +89,6 @@ const appReducer = (state = initialState, action) => {
                     return ele
                 }
             })
-            // console.log(temp)
             return {
                 ...state,
                 mainData: temp
@@ -114,7 +113,6 @@ const appReducer = (state = initialState, action) => {
                     return ele
                 }
             })
-            // console.log(temp)
             return {
                 ...state,
                 mainData: temp
@@ -140,7 +138,6 @@ const appReducer = (state = initialState, action) => {
                     return ele
                 }
             })
-            // console.log(temp)
             return {
                 ...state,
                 mainData: temp
